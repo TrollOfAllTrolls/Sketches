@@ -5,12 +5,9 @@ public class SRandomness {
 	static int random;
 	static boolean TF;
 
-	public static void main(String[] args) {
-
-	}
-
 	public int rN() {
 		random = r.nextInt(10) + 1;
+
 		return random;
 	}
 
