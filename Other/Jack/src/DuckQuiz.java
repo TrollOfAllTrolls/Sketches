@@ -5,8 +5,8 @@ public class DuckQuiz {
 		ArrayList<Duck> Duckie = new ArrayList<Duck>();
 		Duckie.add(new Duck("Daffy"));
 		Duckie.add(new Duck("Waddles"));
-		for (int i = 0; i < 2; i++) {
-			Duckie.get(i).feed();
+		for (Duck duck : Duckie) {
+			duck.feed();
 		}
 	}
 }
