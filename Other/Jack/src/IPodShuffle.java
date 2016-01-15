@@ -22,13 +22,13 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 
 public class IPodShuffle implements ActionListener {
 
-	public static void main(String[] args) throws IOException, JavaLayerException {
+	public IPodShuffle() {
 		JFrame MainFrame = new JFrame();
 		JPanel MainPanel = new JPanel();
 		JButton SButton = new JButton("Surprise Button!");
 		MainFrame.add(MainPanel);
 		MainPanel.add(SButton);
-		SButton.addActionListener(new RandomSong());
+		SButton.addActionListener(this);
 		MainFrame.setVisible(true);
 		MainFrame.pack();
 		ArrayList<Song> Album = new ArrayList<Song>();
@@ -42,19 +42,13 @@ public class IPodShuffle implements ActionListener {
 
 	}
 
+	public static void main(String[] args) throws IOException, JavaLayerException {
+		new IPodShuffle();
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-	}
-	
-	public class RandomSong implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			if(e.getSource() == ){
-				
-			}
-		}
 	}
 
 	/**
