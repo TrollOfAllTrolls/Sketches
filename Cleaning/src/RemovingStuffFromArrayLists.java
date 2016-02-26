@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class RemovingStuffFromArrayLists {
 
@@ -54,7 +55,13 @@ public class RemovingStuffFromArrayLists {
 
 		/* TODO 2: Remove the hash symbols and print out the truth. */
 
-		truth.removeIf(p -> p.equals('#'));
+		Iterator<Character> Mem = truth.iterator();
+		while (Mem.hasNext()) {
+			Character g = Mem.next();
+			if (g.equals('#')) {
+				Mem.remove();
+			}
+		}
 
 		System.out.println(truth);
 	}
