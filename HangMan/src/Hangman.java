@@ -13,6 +13,7 @@ public class Hangman implements KeyListener {
 	JPanel MainPanel = new JPanel();
 	ArrayList<JLabel> JLabels = new ArrayList<JLabel>();
 	String currentWord;
+	int lettersCorrect;
 
 	public Hangman() {
 		createUI();
@@ -31,7 +32,7 @@ public class Hangman implements KeyListener {
 	private void createPuzzles() {
 		puzzles.push("pineapple");
 		puzzles.push("carrot");
-		puzzles.push("hippopotomonstrosesquipedaliophobia");
+		puzzles.push("apple");
 		puzzles.push("banana");
 		puzzles.push("blueberry");
 
@@ -43,6 +44,7 @@ public class Hangman implements KeyListener {
 
 	private void playPuzzle(String word) {
 		currentWord = word;
+		lettersCorrect = 0;
 		for (int i = 0; i < word.length(); i++) {
 			JLabel Labeler = new JLabel();
 			MainPanel.add(Labeler);
@@ -54,14 +56,24 @@ public class Hangman implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		char typed = e.getKeyChar();
-		int lettersCorrect = currentWord.length();
 		for (int i = 0; i < currentWord.length(); i++) {
-			if (JLabels.get(i).getText().equals("_")) {
-				lettersCorrect = lettersCorrect - 1;
+			if (typed == currentWord.charAt(i)) {
+				if (JLabels.get(i).equals("_")) {
+
+					lettersCorrect = lettersCorrect + 1;
+				}
 			}
 			if (lettersCorrect == currentWord.length()) {
-				currentWord = puzzles.pop();
-				playPuzzle(currentWord);
+				if (typed == '\n') {
+					MainFrame.remove(MainPanel);
+					MainPanel = new JPanel();
+					MainFrame.add(MainPanel);
+					JLabels.forEach(l -> MainPanel.remove(l));
+					currentWord = puzzles.pop();
+					playPuzzle(currentWord);
+					lettersCorrect = 0;
+				}
+
 			}
 		}
 
