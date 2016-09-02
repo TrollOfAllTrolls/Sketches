@@ -6,8 +6,8 @@ public class OncogeneDetector {
 		int totalCancerSequences = cancerSequences.size();
 		int oncogeneCountHealthy = 0;
 		int oncogeneCountCancer = 0;
-		double oncogenePercentHealthy = 0;
-		double oncogenePercentCancer = 0;
+		float oncogenePercentHealthy = 0;
+		float oncogenePercentCancer = 0;
 		boolean isOncogene = false;
 
 		for (String sequence : healthySequences) {
@@ -22,13 +22,16 @@ public class OncogeneDetector {
 			}
 		}
 
-		oncogenePercentHealthy = oncogeneCountHealthy / totalHealthySequences;
-		oncogenePercentCancer = oncogeneCountCancer / totalCancerSequences;
-
+		oncogenePercentHealthy = oncogeneCountHealthy / (float) totalHealthySequences;
+		oncogenePercentCancer = oncogeneCountCancer / (float) totalCancerSequences;
 		if (oncogenePercentCancer > oncogenePercentHealthy) {
 			isOncogene = true;
 		}
-
+		if (isOncogene == true) {
+			System.out.println(canidate + " is an Oncogene");
+		} else {
+			System.out.println(canidate + " is not an Oncogene");
+		}
 		return isOncogene;
 	}
 }
