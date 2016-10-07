@@ -1,27 +1,39 @@
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Stack;
 
 public class PalindromeFinder {
 	public static void main(String[] args) {
-		ArrayList<String> allWords = readFromFile("Words.txt");
-		PalindromeFinder Start = new PalindromeFinder();
-		boolean s = Start.findPalindromes();
-		System.out.println(s);
+		System.out.println('\n' + "There are " + findPalindromes() + " palindromes.");
 	}
 
-	public int findPalindromes(ArrayList<String> words) {
+	public static int findPalindromes() {
 		int palindromes = 0;
+		String word = "";
+		try {
+			FileReader files = new FileReader(new File("Words.txt"));
+			int c = 0;
+			while ((c = files.read()) != -1) {
+				char letter = (char) c;
+				if (letter == '\n') {
+					if (isPalindrome(word)) {
+						palindromes += 1;
+						System.out.println(word + " is a palindrome.");
+					}
+					word = "";
+				} else {
+					word += letter;
+				}
 
-		for (String word : words) {
-			if (isPalindrome(word)) {
-				palindromes++;
 			}
+		} catch (Exception e) {
+			System.out.println("Error loading file");
 		}
-
 		return palindromes;
 	}
 
-	public boolean isPalindrome(String word) {
+	public static boolean isPalindrome(String word) {
 		Stack<Character> letters = new Stack<Character>();
 		String compareWord = "";
 		boolean isPalindrome = false;
