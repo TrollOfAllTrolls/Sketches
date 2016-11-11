@@ -42,6 +42,7 @@
 /MasterOrder.class
 /MedianFinder.class
 /MoreAndMoreTests.class
+/MoreTestPractice.class
 /MoreTests.class
 /MurderOfCrows.class
 /MyFirsrtArray.class
@@ -53,6 +54,7 @@
 /PhotoQuiz.class
 /PigLatinConverter.class
 /Plane.class
+/PracticeTests.class
 /RandomCity.class
 /RemovingStuffFromArrayLists$1Dirt.class
 /RemovingStuffFromArrayLists$1Stuff.class
@@ -79,5 +81,6 @@
 /WindowList.class
 /repeatWithChar.class
 /repeatingChar.class
-/PracticeTests.class
-/MoreTestPractice.class
+/MyArrayList.class
+/MyArrayListTest.class
+/MyImage.class
