@@ -1,5 +1,5 @@
 
-public class MyArrayList {
+public class MyArrayList<obj> {
 	int[] array;
 
 	public MyArrayList() {
@@ -29,6 +29,40 @@ public class MyArrayList {
 			array[array.length - 1] = i;
 		}
 
+	}
+
+	public int remove(int place) {
+		int[] tempArray;
+		int removed = 0;
+		int rD = 0;
+
+		if (array != null) {
+			tempArray = new int[array.length - 1];
+
+			for (int i = 0; i < array.length; i++) {
+				if (array[i] != array[place]) {
+					tempArray[i - rD] = array[i];
+				}
+
+				else {
+					rD++;
+					removed = array[i];
+				}
+
+			}
+
+			array = new int[tempArray.length];
+
+			for (int j = 0; j < tempArray.length; j++) {
+				array[j] = tempArray[j];
+			}
+		}
+
+		return removed;
+	}
+
+	public int getSize() {
+		return array.length;
 	}
 
 	public int get(int e) {
