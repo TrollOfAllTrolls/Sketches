@@ -1,7 +1,9 @@
+import java.util.ArrayList;
 
 public class Doctor {
-	Patient assignedPatients[] = new Patient[3];
+	ArrayList<Patient> assignedPatients = new ArrayList<Patient>();
 	int patientNum = 0;
+	boolean evil = false;
 
 	public Doctor() {
 
@@ -27,14 +29,36 @@ public class Doctor {
 		return canMakeHouseCalls;
 	}
 
-	public void assignPatient(Patient person) {
+	public void assignPatient(Patient person) throws DoctorFullException {
 		if (patientNum < 3) {
-			assignedPatients[patientNum] = person;
+			assignedPatients.add(person);
 			patientNum++;
+		} else if (patientNum > 2) {
+			throw new DoctorFullException();
 		}
 	}
 
-	public Patient[] getPatients() {
+	public ArrayList<Patient> getPatients() {
 		return assignedPatients;
+	}
+
+	public void giveMedicine() {
+		if (evil == false) {
+			for (Patient person : assignedPatients) {
+				person.checkPulse();
+			}
+		} else {
+			for (Patient person : assignedPatients) {
+				person.kill();
+			}
+		}
+	}
+
+	public void becomeEvil() {
+		evil = true;
+	}
+
+	public boolean isEvil() {
+		return evil;
 	}
 }

@@ -23,4 +23,17 @@ public class Hospital {
 	public ArrayList<Patient> getPatients() {
 		return patients;
 	}
+
+	public void assignPatientsToDoctors() {
+		int selectedDoctor = 0;
+		for (int i = 0; i < patients.size(); i++) {
+			try {
+				doctors.get(selectedDoctor).assignPatient(patients.get(i));
+				System.out.println(selectedDoctor);
+			} catch (Exception e) {
+				selectedDoctor++;
+				i--;
+			}
+		}
+	}
 }
