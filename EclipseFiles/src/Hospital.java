@@ -8,6 +8,15 @@ public class Hospital {
 
 	}
 
+	public void add(Object person) {
+		if (person instanceof Doctor) {
+			doctors.add((Doctor) person);
+		}
+		if (person instanceof Patient) {
+			patients.add((Patient) person);
+		}
+	}
+
 	public void addDoctor(Doctor doc) {
 		doctors.add(doc);
 	}
@@ -34,6 +43,12 @@ public class Hospital {
 				selectedDoctor++;
 				i--;
 			}
+		}
+	}
+
+	public void makeDoctorsWork() {
+		for (Doctor doc : doctors) {
+			doc.giveMedicine();
 		}
 	}
 }
