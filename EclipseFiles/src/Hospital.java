@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Hospital {
 	ArrayList<Doctor> doctors = new ArrayList<Doctor>();
 	ArrayList<Patient> patients = new ArrayList<Patient>();
+	ArrayList<Zombie> zombies = new ArrayList<Zombie>();
 
 	public Hospital() {
 
@@ -29,8 +30,21 @@ public class Hospital {
 		patients.add(person);
 	}
 
+	public void removePatient(Patient patient) {
+		patients.remove(patient);
+	}
+
 	public ArrayList<Patient> getPatients() {
 		return patients;
+	}
+
+	public void addZombie(Zombie zombie) {
+		System.out.println("Called");
+		zombies.add(zombie);
+	}
+
+	public ArrayList<Zombie> getZombies() {
+		return zombies;
 	}
 
 	public void assignPatientsToDoctors() {
@@ -38,7 +52,6 @@ public class Hospital {
 		for (int i = 0; i < patients.size(); i++) {
 			try {
 				doctors.get(selectedDoctor).assignPatient(patients.get(i));
-				System.out.println(selectedDoctor);
 			} catch (Exception e) {
 				selectedDoctor++;
 				i--;
@@ -47,7 +60,9 @@ public class Hospital {
 	}
 
 	public void makeDoctorsWork() {
+		System.out.println(doctors.size());
 		for (Doctor doc : doctors) {
+			
 			doc.giveMedicine();
 		}
 	}

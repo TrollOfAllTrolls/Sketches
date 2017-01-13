@@ -172,7 +172,10 @@ public class HospitalTest extends TestCase {
 		assertEquals(true, luckyPatient.isAlive());
 	}
 
-	/* Add a new constructor to Doctor that makes use of the other using "this()" */
+	/*
+	 * Add a new constructor to Doctor that makes use of the other using
+	 * "this()"
+	 */
 	public void testDoctorConstructors() throws Exception {
 		Hospital aHospital = new Hospital();
 		Doctor doctor = new Doctor("1", aHospital);
@@ -185,24 +188,22 @@ public class HospitalTest extends TestCase {
 	}
 
 	/*
-	 * When a patient is killed they move from the Patient list to the Zombie list. This will give you the current date
-	 * and time: new Date().toString()
+	 * When a patient is killed they move from the Patient list to the Zombie
+	 * list. This will give you the current date and time: new Date().toString()
 	 */
 	public void testDeadPatientsBecomeZombies() throws Exception {
-		Hospital walkingDeadHospital = new Hospital();
-		Doctor evilDoctor = new Doctor("666", walkingDeadHospital);
-		Doctor niceDoctor = new Doctor("777", walkingDeadHospital);
-		walkingDeadHospital.add(evilDoctor);
-		walkingDeadHospital.add(niceDoctor);
-		walkingDeadHospital.add(new Patient());
-		walkingDeadHospital.add(new Patient());
-		walkingDeadHospital.add(new Patient());
-		walkingDeadHospital.add(new Patient());
-		walkingDeadHospital.add(new Patient());
-		walkingDeadHospital.assignPatientsToDoctors();
-		walkingDeadHospital.makeDoctorsWork();
+		Hospital zombieHospital = new Hospital();
+		Doctor evilDoctor = new Doctor("666", zombieHospital);
+		Doctor niceDoctor = new Doctor("777", zombieHospital);
+		zombieHospital.add(new Patient());
+		zombieHospital.add(new Patient());
+		zombieHospital.add(new Patient());
+		zombieHospital.add(new Patient());
+		zombieHospital.add(new Patient());
+		zombieHospital.assignPatientsToDoctors();
+		zombieHospital.makeDoctorsWork();
 
-		assertEquals(3, walkingDeadHospital.getZombies().size());
-		assertEquals(2, walkingDeadHospital.getPatients().size());
+		assertEquals(3, zombieHospital.getZombies().size());
+		assertEquals(2, zombieHospital.getPatients().size());
 	}
 }

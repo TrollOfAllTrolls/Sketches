@@ -17,6 +17,7 @@ public class Patient {
 
 	public void kill() {
 		alive = false;
+		
 	}
 
 	public boolean isAlive() {
