@@ -58,12 +58,14 @@ public class Horses2012 {
 		horseBarn.consolidate();
 		// 10. write asserts that verify that the barn was consolidated (see
 		// page 16)
-		System.out.println(Arrays.toString(horseBarn.getSpaces()));
+
 		assertEquals(0, horseBarn.findHorseSpace("Trigger"));
 		assertEquals(1, horseBarn.findHorseSpace("Silver"));
 		assertEquals(2, horseBarn.findHorseSpace("Lady"));
 		assertEquals(3, horseBarn.findHorseSpace("Patches"));
 		assertEquals(4, horseBarn.findHorseSpace("Duke"));
+		assertEquals(null, horseBarn.horses[5]);
+		assertEquals(null, horseBarn.horses[6]);
 	}
 
 }

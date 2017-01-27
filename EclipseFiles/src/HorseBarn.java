@@ -12,18 +12,17 @@ public class HorseBarn {
 	}
 
 	public void consolidate() {
-		Horse lastHorse = new Horse("placeholder", 1337);
+		Horse[] newHorses = new Horse[horses.length];
+		int nextOpen = 0;
 
 		for (int i = 0; i < horses.length; i++) {
-			for (int j = 0; j < horses.length; j++) {
-				if (lastHorse == null && horses[i] != null) {
-					horses[i - 1] = horses[i];
-					horses[i] = null;
-				}
-				lastHorse = horses[i];
+			if (horses[i] != null) {
+				newHorses[nextOpen] = horses[i];
+				nextOpen++;
 			}
 		}
 
+		horses = newHorses;
 	}
 
 	public int findHorseSpace(String name) {
