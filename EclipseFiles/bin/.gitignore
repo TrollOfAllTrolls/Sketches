@@ -6,16 +6,13 @@
 /ArrayListSorting.class
 /AudioPlayer.class
 /BasicTextEditor.class
-/Beatle.class
 /Blackjack/
 /Cat.class
 /ChangeCalculator.class
 /CharTests.class
-/Chip.class
 /CodeCracker.class
 /CookieOrder.class
 /CookieOrderTest.class
-/Crow.class
 /DNA.class
 /Doctor.class
 /DoctorFullException.class
@@ -23,12 +20,17 @@
 /DogMaker.class
 /DuellingButtons.class
 /Encryption/
+/Fortune Teller.png
+/Scary.wav
+/Server/
+/Beatle.class
+/Chip.class
+/Crow.class
 /Excercises.class
 /FeedTheTortoise.class
 /FibonacciSequence.class
 /FindRange.class
 /Forest.class
-/Fortune Teller.png
 /FortuneTeller.class
 /GameOptions.class
 /GeneralPractitioner.class
@@ -74,9 +76,7 @@
 /RemovingStuffFromArrayLists$1Stuff.class
 /RemovingStuffFromArrayLists$1Worm.class
 /RemovingStuffFromArrayLists.class
-/Scary.wav
 /SearchingAndSortingAlgorithms.class
-/Server/
 /ShapeCalculator.class
 /Snake.class
 /SnakesRandomness.class
@@ -86,6 +86,8 @@
 /StringThings.class
 /Surgeon.class
 /TestStringManipulator.class
+/TicketBot.class
+/TicketPurchasing.class
 /Translator.class
 /Tree.class
 /TurtlePond.class
@@ -99,5 +101,3 @@
 /Zombie.class
 /repeatWithChar.class
 /repeatingChar.class
-/TicketPurchasing.class
-/TicketBot.class
