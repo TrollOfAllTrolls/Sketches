@@ -50,8 +50,9 @@ int getNeighbors(Cell cell) {
 }
 
 void setup() {
-  int cellSize = 25;
-  cellAmount = 10;
+  frameRate(3);
+  int cellSize = 15;
+  cellAmount = 100;
 
   cells = new Cell[cellAmount][cellAmount];
   for (int i = 0; i < cellAmount; i++) {
@@ -62,6 +63,7 @@ void setup() {
   surface.setSize(cellSize * cellAmount, cellSize * cellAmount);
   cells[1][2].setAlive(true);
   cells[2][2].setAlive(true);
+  cells[3][2].setAlive(true);
   println(getNeighbors(cells [0][2]));
 }
 void draw() {
@@ -70,19 +72,20 @@ void draw() {
 
   for (Cell[] c : cells) {
     for (Cell cell : c) {
+
+      cell.display();
       if (getNeighbors(cells[cell.cellX][cell.cellY]) == 3) {
         birth.add(cell);
       } else if (getNeighbors(cells[cell.cellX][cell.cellY]) > 3 || getNeighbors(cells[cell.cellX][cell.cellY]) < 2) {
         kill.add(cell);
       }
-      for (int i = 0; i < birth.size(); i++) {
-        birth.get(i).setAlive(true);
-      }
-
-      for (int j = 0; j < kill.size(); j++) {
-        kill.get(j).setAlive(false);
-      }
-      cell.display();
     }
+  }
+  for (int i = 0; i < birth.size(); i++) {
+    birth.get(i).setAlive(true);
+  }
+
+  for (int j = 0; j < kill.size(); j++) {
+    kill.get(j).setAlive(false);
   }
 }
