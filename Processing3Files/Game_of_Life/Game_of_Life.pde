@@ -1,5 +1,7 @@
 Cell[][] cells;
 int cellAmount;
+boolean running = true;
+int cellSize = 15;
 
 class Cell {
   boolean isAlive;
@@ -40,8 +42,6 @@ int getNeighbors(Cell cell) {
         if (cell.cellX == x && cell.cellY == y) {
           neighbors--;
         }
-
-        println(cells[x][y].isAlive());
       }
     }
   }
@@ -50,8 +50,7 @@ int getNeighbors(Cell cell) {
 }
 
 void setup() {
-  frameRate(3);
-  int cellSize = 15;
+  frameRate(60);
   cellAmount = 100;
 
   cells = new Cell[cellAmount][cellAmount];
@@ -61,10 +60,6 @@ void setup() {
     }
   }
   surface.setSize(cellSize * cellAmount, cellSize * cellAmount);
-  cells[1][2].setAlive(true);
-  cells[2][2].setAlive(true);
-  cells[3][2].setAlive(true);
-  println(getNeighbors(cells [0][2]));
 }
 void draw() {
   ArrayList<Cell> birth = new ArrayList<Cell>();
@@ -81,11 +76,31 @@ void draw() {
       }
     }
   }
-  for (int i = 0; i < birth.size(); i++) {
-    birth.get(i).setAlive(true);
-  }
+  if (running== true) {
+    for (int i = 0; i < birth.size(); i++) {
+      birth.get(i).setAlive(true);
+    }
 
-  for (int j = 0; j < kill.size(); j++) {
-    kill.get(j).setAlive(false);
+    for (int j = 0; j < kill.size(); j++) {
+      kill.get(j).setAlive(false);
+    }
+  }
+}
+void mouseClicked() {
+  int X = mouseX/cellSize;
+  int Y = mouseY/cellSize;
+  if (cells[X][Y].isAlive == false) {
+    cells[X][Y].setAlive(true);
+  } else {
+    cells[X][Y].setAlive(false);
+  }
+}
+void keyPressed() {
+  if (key == ' ') {
+    if (running== false) {
+      running = true;
+    } else {
+      running = false;
+    }
   }
 }
