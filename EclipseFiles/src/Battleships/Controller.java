@@ -1,11 +1,12 @@
 package Battleships;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class Controller implements MouseListener {
+public class Controller implements KeyListener {
 	Model model;
 	View view;
+	boolean xChosen = false;
 
 	public Controller(Model model, View view) {
 		this.view = view;
@@ -13,27 +14,25 @@ public class Controller implements MouseListener {
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void keyTyped(KeyEvent e) {
 
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void keyPressed(KeyEvent e) {
+		if (xChosen == false) {
+			try {
+				Integer.parseInt(e.getKeyChar() + "");
+			} catch (Exception e2) {
 
+			}
+
+		}
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void keyReleased(KeyEvent e) {
 
 	}
 
-	@Override
-	public void mouseEntered(MouseEvent e) {
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-
-	}
 }
