@@ -48,7 +48,23 @@ public class View {
 		mainFrame.setVisible(true);
 	}
 
+	public JLabel getXState() {
+		return xState;
+	}
+
+	public void setXState(String x) {
+		xState.setText(x);
+	}
+
+	public JLabel getYState() {
+		return yState;
+	}
+
+	public void setYState(String y) {
+		yState.setText(y);
+	}
+
 	public void addListener(Controller control) {
-		playerPanel.addKeyListener(control);
+		mainFrame.addKeyListener(control);
 	}
 }
