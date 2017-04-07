@@ -3,6 +3,7 @@ package Battleships;
 import java.awt.Color;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,13 +30,15 @@ public class View {
 		gamePanel.add(controlPanel);
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
-				playerLabels[i][j] = new JLabel(" □ ");
+				playerLabels[i][j] = new JLabel("   ");
 				playerLabels[i][j].setOpaque(true);
 				playerLabels[i][j].setBackground(Color.cyan);
+				playerLabels[i][j].setBorder(BorderFactory.createLineBorder(Color.gray));
 				playerPanel.add(playerLabels[i][j]);
-				enemyLabels[i][j] = new JLabel(" □ ");
+				enemyLabels[i][j] = new JLabel("   ");
 				enemyLabels[i][j].setOpaque(true);
-				enemyLabels[i][j].setBackground(Color.cyan);
+				enemyLabels[i][j].setBackground(Color.orange);
+				enemyLabels[i][j].setBorder(BorderFactory.createLineBorder(Color.gray));
 				enemyPanel.add(enemyLabels[i][j]);
 			}
 		}
@@ -44,7 +47,9 @@ public class View {
 		controlPanel.add(yLabel);
 		controlPanel.add(yState);
 		mainFrame.setLayout(new GridLayout(2, 1));
-		mainFrame.setSize(320, 400);
+		mainFrame.setSize(320, 450);
+		gamePanel.setBackground(Color.white);
+		controlPanel.setBackground(Color.white);
 		mainFrame.setVisible(true);
 	}
 
@@ -62,6 +67,14 @@ public class View {
 
 	public void setYState(String y) {
 		yState.setText(y);
+	}
+
+	public void sinkShip(int x, int y) {
+		enemyLabels[y][x].setBackground(Color.red);
+	}
+
+	public void markSpot(int x, int y) {
+		enemyLabels[y][x].setBackground(Color.yellow);
 	}
 
 	public void addListener(Controller control) {

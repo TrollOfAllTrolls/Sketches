@@ -14,8 +14,11 @@ public class Controller implements KeyListener {
 		this.model = model;
 	}
 
-	public void updateView() {
+	public void updateXView() {
 		view.setXState(model.getX() + "");
+	}
+
+	public void updateYView() {
 		view.setYState(model.getY() + "");
 	}
 
@@ -32,11 +35,16 @@ public class Controller implements KeyListener {
 			view.setXState("-");
 			view.setYState("-");
 			xChosen = false;
+			if (model.fire(model.getX(), model.getY()) == true) {
+				view.sinkShip(model.getX(), model.getY());
+			} else {
+				view.markSpot(model.getX(), model.getY());
+			}
 		} else if (xChosen == false) {
 			try {
-				System.out.println(Integer.parseInt(e.getKeyChar() + ""));
+				System.out.println("X Chosen: " + Integer.parseInt(e.getKeyChar() + ""));
 				model.setX(Integer.parseInt(e.getKeyChar() + ""));
-				updateView();
+				updateXView();
 				keyEnters++;
 				xChosen = true;
 			} catch (Exception e2) {
@@ -44,9 +52,9 @@ public class Controller implements KeyListener {
 			}
 		} else {
 			try {
-				System.out.println(Integer.parseInt(e.getKeyChar() + ""));
+				System.out.println("Y Chosen: " + Integer.parseInt(e.getKeyChar() + ""));
 				model.setY(Integer.parseInt(e.getKeyChar() + ""));
-				updateView();
+				updateYView();
 				keyEnters++;
 				xChosen = false;
 			} catch (Exception e2) {
