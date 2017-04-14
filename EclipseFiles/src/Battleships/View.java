@@ -20,6 +20,10 @@ public class View {
 	JLabel xState = new JLabel("-");
 	JLabel yLabel = new JLabel("    Y: ");
 	JLabel yState = new JLabel("-");
+	JLabel pLabel = new JLabel("Your Ships:  ");
+	JLabel pState = new JLabel("-");
+	JLabel eLabel = new JLabel("Enemies Ships:  ");
+	JLabel eState = new JLabel("-");
 
 	public View() {
 		mainFrame.add(gamePanel);
@@ -69,11 +73,23 @@ public class View {
 		yState.setText(y);
 	}
 
-	public void sinkShip(int x, int y) {
+	public void highlightPShip(int x, int y) {
+		playerLabels[y][x].setBackground(Color.green);
+	}
+
+	public void sinkPShip(int x, int y) {
+		playerLabels[y][x].setBackground(Color.lightGray);
+	}
+
+	public void markPSpot(int x, int y) {
+		playerLabels[y][x].setBackground(Color.blue);
+	}
+
+	public void sinkEShip(int x, int y) {
 		enemyLabels[y][x].setBackground(Color.red);
 	}
 
-	public void markSpot(int x, int y) {
+	public void markESpot(int x, int y) {
 		enemyLabels[y][x].setBackground(Color.yellow);
 	}
 
