@@ -10,7 +10,10 @@ public class Controller implements KeyListener {
 	int keyEnters = 0;
 	int randX;
 	int randY;
+	int pShips = 10;
+	int eShips = 10;
 	boolean xChosen = false;
+	boolean gameOver = false;
 
 	public Controller(Model model, View view) {
 		this.view = view;
@@ -39,51 +42,65 @@ public class Controller implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyChar() == KeyEvent.VK_ENTER && keyEnters > 1) {
-			System.out.println("Fired");
+		if (gameOver == false) {
+			if (e.getKeyChar() == KeyEvent.VK_ENTER && keyEnters > 1) {
+				System.out.println("Fired");
 
-			keyEnters = 0;
-			view.setXState("-");
-			view.setYState("-");
-			xChosen = false;
-
-			if (model.eFire(model.getX(), model.getY()) == true) {
-				view.sinkEShip(model.getX(), model.getY());
-			} else {
-				view.markESpot(model.getX(), model.getY());
-			}
-
-			randX = new Random().nextInt(10);
-			randY = new Random().nextInt(10);
-
-			if (model.pFire(randY, randX) == true) {
-				view.sinkPShip(randX, randY);
-			} else {
-				view.markPSpot(randX, randY);
-			}
-		} else if (xChosen == false) {
-			try {
-				System.out.println("X Chosen: " + Integer.parseInt(e.getKeyChar() + ""));
-
-				model.setX(Integer.parseInt(e.getKeyChar() + ""));
-				updateXView();
-				keyEnters++;
-				xChosen = true;
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		} else {
-			try {
-				System.out.println("Y Chosen: " + Integer.parseInt(e.getKeyChar() + ""));
-
-				model.setY(Integer.parseInt(e.getKeyChar() + ""));
-				updateYView();
-				keyEnters++;
+				keyEnters = 0;
+				view.setXState("-");
+				view.setYState("-");
 				xChosen = false;
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
 
+				if (model.eFire(model.getX(), model.getY()) == true) {
+					view.sinkEShip(model.getX(), model.getY());
+					eShips--;
+					view.setEShips(eShips);
+					if (eShips < 1) {
+						view.win();
+						gameOver = true;
+					}
+				} else {
+					view.markESpot(model.getX(), model.getY());
+				}
+
+				randX = new Random().nextInt(10);
+				randY = new Random().nextInt(10);
+
+				if (model.pFire(randY, randX) == true) {
+					view.sinkPShip(randX, randY);
+					pShips--;
+					view.setPShips(pShips);
+					if (pShips < 1) {
+						view.lose();
+						gameOver = true;
+					}
+				} else {
+					view.markPSpot(randX, randY);
+				}
+			} else if (xChosen == false) {
+				try {
+					System.out.println("X Chosen: " + Integer.parseInt(e.getKeyChar() + ""));
+
+					model.setX(Integer.parseInt(e.getKeyChar() + ""));
+					updateXView();
+					keyEnters++;
+					xChosen = true;
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			} else {
+				try {
+					System.out.println("Y Chosen: " + Integer.parseInt(e.getKeyChar() + ""));
+
+					model.setY(Integer.parseInt(e.getKeyChar() + ""));
+					updateYView();
+					keyEnters++;
+					xChosen = false;
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+
+			}
 		}
 	}
 

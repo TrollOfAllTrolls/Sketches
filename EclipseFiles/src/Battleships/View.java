@@ -14,16 +14,18 @@ public class View {
 	JPanel playerPanel = new JPanel();
 	JPanel enemyPanel = new JPanel();
 	JPanel controlPanel = new JPanel();
+	JPanel statsPanel = new JPanel();
 	JLabel[][] playerLabels = new JLabel[10][10];
 	JLabel[][] enemyLabels = new JLabel[10][10];
-	JLabel xLabel = new JLabel("    X: ");
+	JLabel xLabel = new JLabel("   X: ");
 	JLabel xState = new JLabel("-");
-	JLabel yLabel = new JLabel("    Y: ");
+	JLabel yLabel = new JLabel("   Y: ");
 	JLabel yState = new JLabel("-");
-	JLabel pLabel = new JLabel("Your Ships:  ");
-	JLabel pState = new JLabel("-");
-	JLabel eLabel = new JLabel("Enemies Ships:  ");
-	JLabel eState = new JLabel("-");
+	JLabel pLabel = new JLabel("Your Ships: ");
+	JLabel pState = new JLabel("10");
+	JLabel eLabel = new JLabel("   Enemy Ships: ");
+	JLabel eState = new JLabel("10");
+	JLabel tip = new JLabel(" Press e to fire when you select 2 coordinates ");
 
 	public View() {
 		mainFrame.add(gamePanel);
@@ -32,6 +34,9 @@ public class View {
 		gamePanel.add(enemyPanel);
 		enemyPanel.setLayout(new GridLayout(10, 10));
 		gamePanel.add(controlPanel);
+		gamePanel.setBorder(BorderFactory.createLineBorder(Color.gray));
+		mainFrame.add(statsPanel);
+
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				playerLabels[i][j] = new JLabel("   ");
@@ -46,14 +51,21 @@ public class View {
 				enemyPanel.add(enemyLabels[i][j]);
 			}
 		}
+		tip.setBorder(BorderFactory.createLineBorder(Color.gray));
 		controlPanel.add(xLabel);
 		controlPanel.add(xState);
 		controlPanel.add(yLabel);
 		controlPanel.add(yState);
+		statsPanel.add(pLabel);
+		statsPanel.add(pState);
+		statsPanel.add(eLabel);
+		statsPanel.add(eState);
+		statsPanel.add(tip);
 		mainFrame.setLayout(new GridLayout(2, 1));
-		mainFrame.setSize(320, 450);
+		mainFrame.setSize(300, 460);
 		gamePanel.setBackground(Color.white);
 		controlPanel.setBackground(Color.white);
+		statsPanel.setBackground(Color.cyan);
 		mainFrame.setVisible(true);
 	}
 
@@ -85,12 +97,28 @@ public class View {
 		playerLabels[y][x].setBackground(Color.blue);
 	}
 
+	public void setPShips(int i) {
+		pState.setText(i + "");
+	}
+
+	public void win() {
+		tip.setText(" - - - You win! - - - ");
+	}
+
 	public void sinkEShip(int x, int y) {
 		enemyLabels[y][x].setBackground(Color.red);
 	}
 
 	public void markESpot(int x, int y) {
 		enemyLabels[y][x].setBackground(Color.yellow);
+	}
+
+	public void setEShips(int i) {
+		eState.setText(i + "");
+	}
+
+	public void lose() {
+		tip.setText(" - - - You lose! - - - ");
 	}
 
 	public void addListener(Controller control) {
