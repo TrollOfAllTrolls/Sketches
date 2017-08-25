@@ -1,5 +1,6 @@
 /.DS_Store
 /ABCencrypt.class
+/AbstractPractice/
 /AgeCalculator.class
 /Algorithms.class
 /AreYouHappy.class
@@ -8,13 +9,17 @@
 /AutocorrectTest.class
 /BasicTextEditor.class
 /Battleships/
+/Beatle.class
+/BinaryTree/
 /Blackjack/
 /Cat.class
 /ChangeCalculator.class
 /CharTests.class
+/Chip.class
 /CodeCracker.class
 /CookieOrder.class
 /CookieOrderTest.class
+/Crow.class
 /DNA.class
 /Doctor.class
 /DoctorFullException.class
@@ -22,18 +27,12 @@
 /DogMaker.class
 /DuellingButtons.class
 /Encryption/
-/Fortune Teller.png
-/LinkedList/
-/Scary.wav
-/Server/
-/Beatle.class
-/Chip.class
-/Crow.class
 /Excercises.class
 /FeedTheTortoise.class
 /FibonacciSequence.class
 /FindRange.class
 /Forest.class
+/Fortune Teller.png
 /FortuneTeller.class
 /GameOptions.class
 /GeneralPractitioner.class
@@ -48,6 +47,7 @@
 /JUnitShapes.class
 /Jeopardy.class
 /LearningHashMaps.class
+/LinkedList/
 /LongChipCompetition.class
 /Loop.class
 /Magic8Ball.class
@@ -82,7 +82,9 @@
 /RemovingStuffFromArrayLists$1Stuff.class
 /RemovingStuffFromArrayLists$1Worm.class
 /RemovingStuffFromArrayLists.class
+/Scary.wav
 /SearchingAndSortingAlgorithms.class
+/Server/
 /ShapeCalculator.class
 /Snake.class
 /SnakesRandomness.class
@@ -108,4 +110,3 @@
 /myProgram.class
 /repeatWithChar.class
 /repeatingChar.class
-/BinaryTree/

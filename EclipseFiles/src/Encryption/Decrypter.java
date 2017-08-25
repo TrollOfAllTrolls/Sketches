@@ -1,4 +1,4 @@
-package encryption;
+package Encryption;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

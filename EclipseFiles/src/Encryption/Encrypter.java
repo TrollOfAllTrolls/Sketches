@@ -1,4 +1,4 @@
-package encryption;
+package Encryption;
 
 import java.io.FileWriter;
 import java.io.IOException;
