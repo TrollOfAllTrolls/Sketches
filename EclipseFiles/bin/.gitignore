@@ -19,7 +19,6 @@
 /CodeCracker.class
 /CookieOrder.class
 /CookieOrderTest.class
-/Crow.class
 /DNA.class
 /Doctor.class
 /DoctorFullException.class
@@ -47,9 +46,13 @@
 /JUnitShapes.class
 /Jeopardy.class
 /LearningHashMaps.class
+/Level4ExamAlt/
 /LinkedList/
 /LongChipCompetition.class
 /Loop.class
+/Scary.wav
+/Server/
+/Crow.class
 /Magic8Ball.class
 /MasterOrder.class
 /MedianFinder.class
@@ -82,9 +85,7 @@
 /RemovingStuffFromArrayLists$1Stuff.class
 /RemovingStuffFromArrayLists$1Worm.class
 /RemovingStuffFromArrayLists.class
-/Scary.wav
 /SearchingAndSortingAlgorithms.class
-/Server/
 /ShapeCalculator.class
 /Snake.class
 /SnakesRandomness.class
@@ -110,3 +111,4 @@
 /myProgram.class
 /repeatWithChar.class
 /repeatingChar.class
+/StockMarket/

@@ -1,3 +1,5 @@
+package Level4ExamAlt;
+
 import java.util.Scanner;
 
 public class CountingDuplicates {
