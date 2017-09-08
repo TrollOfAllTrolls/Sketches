@@ -16,17 +16,16 @@ public class StockMarketAnalyzer {
 		double[] stockData = { 0, 0, 1, 0, 0, 0 };
 
 		for (int i = 0; i < dataSize; i++) {
-			for (int j = 0; j < dataSize; j++) {
-				if (dailyStocks[j][0] / dailyStocks[i][0] > (stockData[5] / 100)) {
+				if (dailyStocks[i][0] < stockData[0]) {
 					stockData[0] = dailyStocks[i][1];
-					stockData[1] = dailyStocks[j][1];
 					stockData[2] = dailyStocks[i][0];
-					stockData[3] = dailyStocks[j][0];
-					stockData[4] = dailyStocks[j][0] - dailyStocks[i][0];
-					stockData[5] = (dailyStocks[j][0] / dailyStocks[i][0]) * 100;
-
 				}
+				else if(dailyStocks[i][0] > stockData[1]) {
+					stockData[1] = dailyStocks[i][1];
+					stockData[3] = dailyStocks[i][0];
 			}
+				stockData[4] = stockData[3] - stockData[2];
+				stockData[5] = (stockData[3] / stockData[2]) * 100;
 		}
 		System.out.print("Buy at " + Math.round(stockData[0]) + ":00 | ");
 		System.out.print("Sell at " + Math.round(stockData[1]) + ":00 | ");
