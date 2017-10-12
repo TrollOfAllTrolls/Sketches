@@ -1,4 +1,13 @@
+int 
+
+//0 means that the barrier is down, 1 means that the barrier is up
 int[] barriers = {0, 0};
+
+//First value is X, Second value is Y, Third value is vital state (1 = alive, 0 = dead)
+int[] person = {295, 295, 1};
+
+//First value is X, Second value is Y
+int[] car = {175, 600};
 
 void setup(){
   size(400,400);
@@ -41,4 +50,16 @@ void draw(){
   fill(30+(175*barriers[0]),30,30);
   ellipse(162.5,340,10,10);
   ellipse(237.5,340,10,10);
+  
+  //The person
+  fill(255, 235*person[2], 150*person[2]);
+  ellipse(person[0], person[1], 16, 16);
+  
+  //The Car
+  fill(255, 100, 100);
+  rect(car[0], car[1], 50, 75);
+  
+  
+  
+  
 }
