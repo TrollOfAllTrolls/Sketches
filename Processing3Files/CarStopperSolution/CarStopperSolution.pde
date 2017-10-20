@@ -1,5 +1,8 @@
 //First value is the frames that have passed, and the rest of the values are separate delays
-int[] times = {0, 50, 200, 300, 390, 415, 500};
+int[] times = {0, 50, 200, 300, 390, 411, 490, 590};
+
+//First value is the barrier's status (Up or down), Second value is the barrier's integrity (Good or damaged)
+int[] barrier = {0, 0};
 
 //First value is X, Second value is Y, Third value is vital state (1 = alive, 0 = dead)
 int[] person = {295, 295, 1};
@@ -11,7 +14,7 @@ int[] car = {135, 600};
 int stoplight = 0;
 
 void setup(){
-  frameRate(50);
+  frameRate(30);
   size(400,400);
   noStroke();
 }
@@ -50,6 +53,12 @@ void draw(){
   rect(310,125,3,150);
   rect(275,125,3,150);
   
+  //The barriers
+  fill(100+(100*barrier[0])-(40*barrier[1]),100+(100*barrier[0])-(40*barrier[1]),100+(100*barrier[0])-(40*barrier[1]));
+  ellipse(162.5,344,10,10);
+  fill(100+(100*barrier[0]),100+(90*barrier[0]),100+(100*barrier[0]));
+  ellipse(237.5,344,10,10);
+  
   //The stoplight
   fill(255 * stoplight, 255 * (1 - stoplight), 0);
   ellipse(193,200,10,10);
@@ -76,30 +85,30 @@ void draw(){
   //Timer for light to turn red
   if(times[0] >= times[2]){
     stoplight = 1;
+    barrier[0] = 1;
   }
   
   //Timer for person to start walking
-  if(times[0] >= times[3] && times[0] < times[5]){
+  if(times[0] >= times[3] && times[0] < times[6]){
     person[0] -= 1;
   }
   
   //Timer for car to move
-  if(times[0] >= times[4]){
+  if(times[0] >= times[4] && times[0] < times[5]){
     car[1] -= 12;
   }
   
-  //Timer for person to get hit by car
+  //Timer for barrier to deform
   if(times[0] >= times[5]){
-    person[1] -= 12;
-    person[2] = 0;
+    barrier[1] = 1;
   }
   
   //Timer for aftermath text to show up
-  if(times[0] >= times[6]){
+  if(times[0] >= times[7]){
     textSize(20);
-    text("He is now", 290, 340);
+    text("He is still", 290, 340);
     textSize(30);
-    fill(255, 0, 0);
-    text("dead", 290, 370);
+    fill(0, 255, 0);
+    text("alive", 290, 370);
   }
 }
