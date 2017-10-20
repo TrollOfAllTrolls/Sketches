@@ -14,7 +14,7 @@ int[] car = {135, 600};
 int stoplight = 0;
 
 void setup(){
-  frameRate(30);
+  frameRate(50);
   size(400,400);
   noStroke();
 }
